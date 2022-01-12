@@ -8,19 +8,28 @@ import Recruitment from "./pages/recruitment";
 import Students from "./pages/students";
 import Detail from "./pages/detail";
 import Signup from "./pages/signup";
-import Signip from "./pages/signin"
+import Signip from "./pages/signin";
+import Dashboard from "./components/dasboard";
+import NewList from "./admin/news";
+import HomeDashboard from "./admin/home";
+import AddNews from "./admin/addnew";
 
 const routes = new Navigo("/", {
     linksSelector: "a"
 });
 const root = document.createElement("div");
-root.id = "root";
 document.body.appendChild(root);
+root.id = "root";
+root.className = "max-w-5xl mx-auto";
 
 const render = (page, id = '') => {
     const layout = `${Header.render()} ${page.render(id)} ${Footer.render()}`;
     document.getElementById("root").innerHTML = layout;
 
+};
+const adminRender = (page, id = '') => {
+    const layout =   `${Dashboard.render(id)} ${ page.render()}`;
+    document.getElementById("root").innerHTML = layout;
 };
 
 const Routes = () => {
@@ -41,14 +50,17 @@ const Routes = () => {
 
         "/signin": () => render(Signip),
 
-        "/detail/:id": function ({
+        "/detail/:id": ({
             data
-        }) {
-            console.log(data);
-            render(Detail, data.id)
-        },
+        }) => render(Detail, data.id),
+
+        "/admin/dashboard": () => adminRender(HomeDashboard),
+
+        "/admin/news": () => adminRender(NewList),
+
+        "/admin/news/add": () => adminRender(AddNews),
+
     });
-    console.log(routes);
     routes.notFound((match) => {
 
         console.log("Not found", match);

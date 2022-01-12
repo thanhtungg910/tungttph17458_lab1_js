@@ -446,9 +446,7 @@ const Students = {
   </div>
 </div>
 </div>
-</nav>
-</header>
-</div>`;
+</nav>`;
   }
 };
 export default Students;
