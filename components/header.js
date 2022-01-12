@@ -10,7 +10,7 @@ const Header = {
             ${Menu.render()}
           </ul>
           <section class="search">
-            <input type="search" class="w-50" name="" id="">
+            <input type="search" class="w-30" name="" id="">
             <button class="ml-3 w-28 bg-[#272F54] border-2 border-[#fff]">Tìm kiếm</button>
           </section>
           <ul class="flex justify-center space-x-7 ">

@@ -13,22 +13,24 @@ import Dashboard from "./components/dasboard";
 import NewList from "./admin/news";
 import HomeDashboard from "./admin/home";
 import AddNews from "./admin/addnew";
+import EditNews from "./admin/editnew";
+
 
 const routes = new Navigo("/", {
     linksSelector: "a"
 });
 const root = document.createElement("div");
-document.body.appendChild(root);
 root.id = "root";
-root.className = "max-w-5xl mx-auto";
+root.className = "max-w-4xl mx-auto";
+document.body.appendChild(root);
 
 const render = (page, id = '') => {
     const layout = `${Header.render()} ${page.render(id)} ${Footer.render()}`;
     document.getElementById("root").innerHTML = layout;
-
+    
 };
 const adminRender = (page, id = '') => {
-    const layout =   `${Dashboard.render(id)} ${ page.render()}`;
+    const layout =   `${Dashboard.render()} ${ page.render(id)}`;
     document.getElementById("root").innerHTML = layout;
 };
 
@@ -59,6 +61,8 @@ const Routes = () => {
         "/admin/news": () => adminRender(NewList),
 
         "/admin/news/add": () => adminRender(AddNews),
+
+        "/admin/news/:id/edit": ({data}) => adminRender(EditNews, data.id),
 
     });
     routes.notFound((match) => {

@@ -1,9 +1,12 @@
+
 const AddNews = {
+
+
     render() {
         return /*html */`
-       <div class="mx-auto max-w-xs">
-       <div class="max-w-xs">
-       <form class="bg-white shadow-md rounded px-5 pt-6 pb-8 mb-4">
+       <div class="mx-auto my-8 max-w-2xl ">
+       <div class="max-w-2xl ">
+       <form action="" method="GET" class="bg-white shadow-md rounded px-5 pt-6 pb-8 mb-4">
        
          <div class="mb-4">
            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -33,9 +36,6 @@ const AddNews = {
          </div>
          
        </form>
-       <p class="text-center text-gray-500 text-xs">
-         &copy;2020 Acme Corp. All rights reserved.
-       </p>
      </div>
        </div>`
     }
