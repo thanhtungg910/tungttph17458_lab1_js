@@ -5,18 +5,17 @@ const Detail = {
         const {
             id,
             title,
+            image,
             description
         } = studyList.find((item) => item.id == dataid);
-        return /*html */ `
-        <div class="grid grid-cols-2 p-4 gap-4 container mx-auto ">
-        <div class="image">
-            <img src="https://picsum.photos/400/400" alt="">
-        </div>
-        <div class="content">
-        <h2 class="font-bold text-2xl">${title}</h2>
-        <p>${description}</p>
-        </div>
-        </div>`
+        return /*html */ `<main class="container mx-auto px-5">  
+        <div class="container text-center mt-2">
+        <h2 class="text-xl font-bold">${title}</h2>
+        <img src="${image}" class="mx-auto" alt=""/>
+        <p class="w-96 mx-auto">
+        ${description}
+        </p>
+        </div></main>`
     }
 }
 export default Detail;

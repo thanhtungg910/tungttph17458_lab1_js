@@ -49,10 +49,7 @@ const Dashboard = {
 
               </div>
         
-              <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Company</a>
-        
-              <a href="#" class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">Stores</a>
-            </div>
+                         </div>
           </div>
         
           <div class="ml-auto flex items-center">

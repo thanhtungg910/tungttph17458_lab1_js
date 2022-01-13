@@ -1,8 +1,6 @@
-const menu = ["Trang chủ",
-    "Tuyển sinh",
-    "Chương trinh đào tạo",
-    "Góc sinh viên",
-    "Tuyển dụng",
+const menu = ["Home",
+    "About page",
+    "News",
 ];
 const newMenu = [...menu];
 
