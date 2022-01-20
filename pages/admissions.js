@@ -1,6 +1,6 @@
 const Admission = {
     render() {
-        return /*html*/ `
+        return /* html */ `
         
   <div class="bg-white">
   <div>

@@ -1,6 +1,6 @@
 const Students = {
-  render() {
-    return /*html */ `
+    render() {
+        return /* html */ `
 <nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="border-b border-gray-200">
 <div class="h-16 flex items-center">
@@ -447,6 +447,6 @@ const Students = {
 </div>
 </div>
 </nav>`;
-  }
+    },
 };
 export default Students;

@@ -1,6 +1,6 @@
 const Dashboard = {
-   render() {
-      return /*html */ `
+    render() {
+        return /* html */ `
       <nav aria-label="Top" class="mx-auto px-4 sm:px-6 lg:px-8">
          <div class="border-b border-gray-200">
             <div class="h-16 flex items-center">
@@ -95,6 +95,6 @@ const Dashboard = {
             </div>
          </div>
       </nav>`;
-   },
+    },
 };
 export default Dashboard;

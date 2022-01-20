@@ -1,9 +1,7 @@
-
 const AddNews = {
 
-
     render() {
-        return /*html */`
+        return /* html */`
        <div class="mx-auto my-8 max-w-2xl ">
        <div class="max-w-2xl ">
        <form action="" method="GET" class="bg-white shadow-md rounded px-5 pt-6 pb-8 mb-4">
@@ -37,7 +35,7 @@ const AddNews = {
          
        </form>
      </div>
-       </div>`
-    }
-}
+       </div>`;
+    },
+};
 export default AddNews;

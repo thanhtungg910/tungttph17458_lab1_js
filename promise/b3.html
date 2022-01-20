@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>B-3</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			const hoTenSv = prompt("Vui long nhap ten ");
+			const monHoc = prompt("Nhap mon hoc dang duoc hoc ");
+
+			function lab(lab, ms, avg) {
+				return new Promise((resolve) => {
+					setTimeout(() => {
+						let diem = prompt(`Diem  ${lab}`) * avg;
+						return resolve(diem);
+					}, ms);
+				});
+			}
+
+			function result(avg) {
+				if (avg < 5) {
+					console.log(
+						"Sinh vien " +
+							hoTenSv +
+							" mon hoc " +
+							monHoc +
+							" co ket qua " +
+							avg +
+							" xep loai " +
+							" hoc luc yeu"
+					);
+				} else if (avg >= 5 && avg < 7) {
+					console.log(
+						"Sinh vien " +
+							hoTenSv +
+							" mon hoc " +
+							monHoc +
+							" co ket qua " +
+							avg +
+							" xep loai " +
+							" hoc luc tb kha"
+					);
+				} else if (avg <= 7 && avg < 8.5) {
+					console.log(
+						"Sinh vien " +
+							hoTenSv +
+							" mon hoc " +
+							monHoc +
+							" co ket qua " +
+							avg +
+							" xep loai " +
+							" hoc luc kha"
+					);
+				} else {
+					console.log(
+						"Sinh vien " +
+							hoTenSv +
+							" mon hoc " +
+							monHoc +
+							" co ket qua " +
+							avg +
+							" xep loai " +
+							" hoc luc gioi"
+					);
+				}
+			}
+
+			function avg() {
+				let ponit = 0;
+				lab(1, 0, 0.1)
+					.then((diem) => {
+						ponit += diem;
+						return lab(2, 3000, 0.2);
+					})
+					.then((diem) => {
+						ponit += diem;
+						return lab(3, 4000, 0.3);
+					})
+					.then((diem) => {
+						ponit += diem;
+						return lab("final", 3000, 0.4);
+					})
+					.then((diem) => {
+						ponit += diem;
+						return result(ponit);
+					});
+			}
+
+			async function start() {
+				const lab1 = await lab(1, 0, 0.1);
+				const lab2 = await lab(2, 3000, 0.2);
+				const lab3 = await lab(3, 4000, 0.3);
+				const final = await lab("final", 3000, 0.4);
+				const avg = lab1 + lab2 + lab3 + final;
+				result(avg);
+			}
+			// start();
+			// avg();
+
+         
+			const id = (stt, ms) => {
+				return new Promise((res) => {
+					setInterval(() => {
+						console.log("setInterval --->" + stt);
+						return res();
+					}, ms);
+				});
+			};
+			const test = async () => {
+				const setInterval1 = await id(1, 5000);
+				const setInterval2 = await id(2, 2000);
+			};
+			// test();
+		</script>
+	</body>
+</html>

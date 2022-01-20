@@ -1,7 +1,8 @@
-import Menu from "./nav.js";
+import Menu from "./nav";
+
 const Header = {
-  render() {
-    return /*html*/ `<header class="container mx-auto px-5">
+    render() {
+        return /* html */ `<header class="container mx-auto px-5">
           <section class="header-top bg-[#272F54]">
             <a href="#"><img src="https://picsum.photos/200/200" class="mx-auto p-2"></a>
           </section>
@@ -21,6 +22,6 @@ const Header = {
         </nav>
           
         </header>`;
-  },
+    },
 };
 export default Header;

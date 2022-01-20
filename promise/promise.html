@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>promise</title>
+	</head>
+	<body>
+		<h2>Loading...</h2>
+      
+
+		<script>
+			const h2El = document.querySelector("h2");
+			function quaTrinhHoc(totalMark, time) {
+				return new Promise((resolve, reject) => {
+					setTimeout(() => {
+						totalMark >= 9 ? resolve(totalMark) : reject("Khong du dieu kien");
+					}, time);
+				});
+			}
+			const diemTongKet = prompt("Nhap diem tong ket: ");
+			const time = prompt("Thoi gian ");
+			quaTrinhHoc(+diemTongKet, +time)
+				.then((res) => {
+					h2El.innerText = res;
+				})
+				.catch((err) => {
+					h2El.innerText = err;
+				});
+		</script>
+	</body>
+</html>
