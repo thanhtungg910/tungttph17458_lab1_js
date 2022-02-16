@@ -1,67 +1,50 @@
 import Navigo from "navigo";
 import {
-    Home,
-    Signup,
-    Signip,
-    Admission,
-    Aducation,
-    Recruitment,
-    Students,
-    Detail,
-} from "./pages/index";
-import { Header, Footer, Dashboard } from "./components/index";
+    Home, Details, Signup, Signin, CartPage,
+} from "./src/pages";
+import { Dashboard, News, AddNews } from "./src/pages/admin";
+import { Header, NavDashboard, NewsList } from "./src/components";
 
-import {
-    HomeDashboard, NewList, AddNews, EditNews,
-} from "./admin/index";
-
-const routes = new Navigo("/", {
-    linksSelector: "a",
-});
-const root = document.createElement("div");
-root.id = "root";
-root.className = "max-w-4xl mx-auto";
-document.body.appendChild(root);
-
-const render = (page, id = "") => {
-    const layout = `${Header.render()}  ${page.render(id)} ${Footer.render()}`;
-    document.getElementById("root").innerHTML = layout;
-};
-const adminRender = (page, id = "") => {
-    const layout = `${Dashboard.render()} ${page.render(id)}`;
-    document.getElementById("root").innerHTML = layout;
-};
-
+const routes = new Navigo("/", { linksSelector: "a", hash: true });
+async function render(page, id) {
+    const layout = `
+    <header class="max-w-4xl mx-auto">
+    ${Header.render()}
+    </header> ${await page.render(id)}`;
+    document.querySelector("#root").innerHTML = layout;
+    if (page.afterRender)page.afterRender();
+}
+async function dashboardRender(page, title, id) {
+    const layout = `${NavDashboard.render()}   ${await page?.render(title, id)}`;
+    document.querySelector("#root").innerHTML = layout;
+    if (page.afterRender)page.afterRender();
+}
 const Routes = () => {
+    routes.on("/admin/*", () => {}, {
+        before(done) {
+            if (JSON.parse(localStorage.getItem("user"))) {
+                const { id } = JSON.parse(localStorage.getItem("user"));
+                // eslint-disable-next-line eqeqeq
+                if (id == 1) {
+                    done();
+                } else {
+                    document.location.href = "/";
+                }
+            } else {
+                document.location.href = "/";
+            }
+        },
+    });
     routes.on({
         "/": () => render(Home),
-
-        "/link-0": () => render(Home),
-
-        "/link-1": () => render(Admission),
-
-        "/link-2": () => render(Aducation),
-
-        "/link-3": () => render(Recruitment),
-
-        "/link-4": () => render(Students),
-
+        "/news/:id": ({ data: { id } }) => render(Details, id),
+        "/cart": () => render(CartPage),
+        "/admin/dashboard": () => dashboardRender(Dashboard),
+        "/admin/news": () => dashboardRender(News, "News"),
+        "/products": () => render(NewsList),
         "/signup": () => render(Signup),
-
-        "/signin": () => render(Signip),
-
-        "/detail/:id": ({ data }) => render(Detail, data.id),
-
-        "/admin/dashboard": () => adminRender(HomeDashboard),
-
-        "/admin/news": () => adminRender(NewList),
-
-        "/admin/news/add": () => adminRender(AddNews),
-
-        "/admin/news/:id/edit": ({ data }) => adminRender(EditNews, +data.id),
-    });
-    routes.notFound((match) => {
-        console.log("Not found", match);
+        "/signin": () => render(Signin),
+        "/admin/news/add": () => dashboardRender(AddNews, "Add News"),
     });
     routes.resolve();
 };
